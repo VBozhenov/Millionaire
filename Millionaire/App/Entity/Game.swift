@@ -18,10 +18,11 @@ final class Game {
     private init() { }
     
     // MARK: - Methods
-    func gameEnded(with percentOfCorrectAnsvers: Int) {
+    func gameDidEnd(with percentOfCorrectAnswers: Int) {
         let currentDate = Date()
         let newHighScore = GameResult(date: currentDate,
-                                      percentOfCorrectAnsvers: percentOfCorrectAnsvers)
+                                      percentOfCorrectAnswers: percentOfCorrectAnswers)
+        print(newHighScore)
         gameResults.append(newHighScore)
         gameSession = nil
     }

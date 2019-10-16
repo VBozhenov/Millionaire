@@ -6,8 +6,6 @@
 //  Copyright © 2019 Vladimir Bozhenov. All rights reserved.
 //
 
-import Foundation
-
 struct Question {
     let question: String
     let answers: [String]

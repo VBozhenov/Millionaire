@@ -21,11 +21,13 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Methods
-    func setViewAppearence() {
-        playButton.setButtonStyle(with: .blue)
-        resultsButton.setButtonStyle(with: .blue)
+    private func setViewAppearence() {
+        playButton.setStyle()
+        resultsButton.setStyle()
     }
+    
     @IBAction func playButtonTapped(_ sender: UIButton) {
+        Game.shared.gameSession = GameSession()
         performSegue(withIdentifier: "toGame", sender: self)
     }
     

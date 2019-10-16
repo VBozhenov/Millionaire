@@ -7,9 +7,10 @@
 //
 
 import Foundation
+
 struct GameResult: Codable {
     
     // MARK: - Properties
     let date: Date
-    let percentOfCorrectAnsvers: Int
+    let percentOfCorrectAnswers: Int
 }

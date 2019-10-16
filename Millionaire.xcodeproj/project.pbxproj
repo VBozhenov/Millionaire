@@ -13,8 +13,7 @@
 		E7D8751E2354F4D0006F497E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7D8751C2354F4D0006F497E /* Main.storyboard */; };
 		E7D875202354F4D1006F497E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7D8751F2354F4D1006F497E /* Assets.xcassets */; };
 		E7D875232354F4D1006F497E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7D875212354F4D1006F497E /* LaunchScreen.storyboard */; };
-		E7D8752B2355F696006F497E /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D8752A2355F696006F497E /* ButtonExtension.swift */; };
-		E7D8752D2355FD0B006F497E /* LabelExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D8752C2355FD0B006F497E /* LabelExtention.swift */; };
+		E7D8752D2355FD0B006F497E /* UIViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D8752C2355FD0B006F497E /* UIViewExtention.swift */; };
 		E7D8752F2355FEB1006F497E /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D8752E2355FEB1006F497E /* Question.swift */; };
 		E7D875312355FF5E006F497E /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D875302355FF5E006F497E /* Questions.swift */; };
 		E7D8753B23560F64006F497E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D8753A23560F64006F497E /* MainViewController.swift */; };
@@ -32,8 +31,7 @@
 		E7D8751F2354F4D1006F497E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7D875222354F4D1006F497E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7D875242354F4D1006F497E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E7D8752A2355F696006F497E /* ButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
-		E7D8752C2355FD0B006F497E /* LabelExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtention.swift; sourceTree = "<group>"; };
+		E7D8752C2355FD0B006F497E /* UIViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtention.swift; sourceTree = "<group>"; };
 		E7D8752E2355FEB1006F497E /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		E7D875302355FF5E006F497E /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		E7D8753A23560F64006F497E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				E7D8752E2355FEB1006F497E /* Question.swift */,
-				E7D875302355FF5E006F497E /* Questions.swift */,
 				E7D8753E23564925006F497E /* Game.swift */,
 				E7D8754023564A08006F497E /* GameSession.swift */,
 				E7D87542235658BB006F497E /* GameResult.swift */,
@@ -124,8 +121,7 @@
 		E7D875362356032B006F497E /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				E7D8752A2355F696006F497E /* ButtonExtension.swift */,
-				E7D8752C2355FD0B006F497E /* LabelExtention.swift */,
+				E7D8752C2355FD0B006F497E /* UIViewExtention.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -143,6 +139,7 @@
 			children = (
 				E7D875212354F4D1006F497E /* LaunchScreen.storyboard */,
 				E7D8751F2354F4D1006F497E /* Assets.xcassets */,
+				E7D875302355FF5E006F497E /* Questions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -226,11 +223,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7D8752D2355FD0B006F497E /* LabelExtention.swift in Sources */,
+				E7D8752D2355FD0B006F497E /* UIViewExtention.swift in Sources */,
 				E7D8753F23564925006F497E /* Game.swift in Sources */,
 				E7D8754123564A08006F497E /* GameSession.swift in Sources */,
 				E7D8751B2354F4D0006F497E /* GameViewController.swift in Sources */,
-				E7D8752B2355F696006F497E /* ButtonExtension.swift in Sources */,
 				E7D875312355FF5E006F497E /* Questions.swift in Sources */,
 				E7D8752F2355FEB1006F497E /* Question.swift in Sources */,
 				E7D875172354F4D0006F497E /* AppDelegate.swift in Sources */,

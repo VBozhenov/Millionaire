@@ -6,8 +6,6 @@
 //  Copyright © 2019 Vladimir Bozhenov. All rights reserved.
 //
 
-import Foundation
-
 class GameSession {
     
     // MARK: - Properties
@@ -15,24 +13,24 @@ class GameSession {
     var currentQuestion: Int = 0
     var correctAnswers: Int = 0
     var percentOfCorrectAnswers: Int = 0
+    
+    // MARK: - Methods
+    private func calculatePercentOfCorrectAnswers() {
+        guard totalQuestions != 0 else { return }
+        percentOfCorrectAnswers = Int(Double(correctAnswers) / Double(totalQuestions) * 100)
+    }
 }
 
 // MARK: - GameViewControllerDelegate
 extension GameSession: GameViewControllerDelegate {
     func answeredCorrect() {
         correctAnswers += 1
-        calculatePercentOfQuestionsAnswered()
+        currentQuestion += 1
+        calculatePercentOfCorrectAnswers()
     }
     
-    func calculatePercentOfQuestionsAnswered() {
-      guard totalQuestions != 0 else { return }
-      let ratioAnsweredToNonAnswered: Float = Float(correctAnswers) / Float(totalQuestions)
-      percentOfCorrectAnswers = Int(ratioAnsweredToNonAnswered * 100)
+    // MARK: - Methods
+    func gameOver() {
+        Game.shared.gameDidEnd(with: percentOfCorrectAnswers)
     }
-    
-    func gameEnded() {
-        Game.shared.gameEnded(with: percentOfCorrectAnswers)
-    }
-    
-    
 }

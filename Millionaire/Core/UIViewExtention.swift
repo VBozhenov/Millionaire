@@ -8,12 +8,12 @@
 
 import UIKit
 
-extension UILabel {
-    func setLabelStyle(with color: UIColor) {
+extension UIView {
+    func setStyle() {
         self.layer.cornerRadius = 15
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.orange.cgColor
-        self.backgroundColor = color
+        self.backgroundColor = .blue
         self.layer.masksToBounds = true
     }
 }

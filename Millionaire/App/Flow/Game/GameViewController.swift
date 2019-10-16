@@ -10,15 +10,17 @@ import UIKit
 
 protocol GameViewControllerDelegate: class {
     var totalQuestions: Int { get set }
+    var percentOfCorrectAnswers: Int { get set }
+    var currentQuestion: Int { get set }
     func answeredCorrect()
-    func gameEnded()
+    func gameOver()
 }
 
 class GameViewController: UIViewController {
     
     // MARK: - Properties
     weak var gameDelegate: GameViewControllerDelegate?
-    let questions = Questions().questions
+    private let questions = Questions().questions
     private var currentQuestionNumber = 0
     
     // MARK: - IBOutlets
@@ -30,37 +32,44 @@ class GameViewController: UIViewController {
     // MARK: - Life Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
-        Game.shared.gameSession = GameSession()
+        setViewAppearence()
         gameDelegate = Game.shared.gameSession
         gameDelegate?.totalQuestions = questions.count
         updateView(with: questions[currentQuestionNumber])
     }
     
     // MARK: - Methods
-    func updateView(with question: Question) {
+    private func setViewAppearence() {
         answerButton.forEach { (button) in
-            button.setButtonStyle(with: .blue)
+            button.setStyle()
         }
-        questionLabel.setLabelStyle(with: .blue)
-        
+        questionLabel.setStyle()
+    }
+    
+    private func updateView(with question: Question) {
         for buttonIndex in 0..<answerButton.count {
-        answerButton[buttonIndex].setTitle(question.answers[buttonIndex],
-                                           for: .normal)
+            answerButton[buttonIndex].setTitle(question.answers[buttonIndex],
+                                               for: .normal)
         }
         questionLabel.text = question.question
-        totalQuestionsLabel.text = "\(Game.shared.gameSession?.totalQuestions ?? 0)"
-        correctAnswersLabel.text = "\(Game.shared.gameSession?.percentOfCorrectAnswers ?? 0)"
+        guard let gameDelegate = gameDelegate else { return }
+        totalQuestionsLabel.text = "\(gameDelegate.totalQuestions)"
+        correctAnswersLabel.text = "\(gameDelegate.percentOfCorrectAnswers)"
     }
     
     // MARK: - IBActions
     @IBAction func answerButtonTapped(_ sender: UIButton) {
-        if sender.tag == questions[currentQuestionNumber].rightAnswer &&
-            currentQuestionNumber < questions.count - 1 {
-            gameDelegate?.answeredCorrect()
-            currentQuestionNumber += 1
+        guard let gameDelegate = gameDelegate else { return }
+        if sender.tag != questions[currentQuestionNumber].rightAnswer {
+            gameDelegate.gameOver()
+            self.dismiss(animated: true)
+        } else if currentQuestionNumber < questions.count - 1 {
+            gameDelegate.answeredCorrect()
+            currentQuestionNumber = gameDelegate.currentQuestion
             updateView(with: questions[currentQuestionNumber])
         } else {
-            gameDelegate?.gameEnded()
+            gameDelegate.answeredCorrect()
+            gameDelegate.gameOver()
             self.dismiss(animated: true)
         }
     }

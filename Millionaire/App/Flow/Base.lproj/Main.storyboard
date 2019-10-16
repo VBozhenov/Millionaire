@@ -26,7 +26,6 @@
                                         </state>
                                         <connections>
                                             <action selector="playButtonTapped:" destination="O3V-im-BGT" eventType="touchUpInside" id="Nwo-iN-bK7"/>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="toGame" id="44u-0K-Auf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UL0-WF-uM0">
@@ -53,6 +52,7 @@
                     <connections>
                         <outlet property="playButton" destination="KKy-8S-QHJ" id="hjm-ng-GLF"/>
                         <outlet property="resultsButton" destination="UL0-WF-uM0" id="dd9-Ug-aBp"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toGame" id="Xv5-n7-xiz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V3w-nX-Fos" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -69,6 +69,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВОПРОС" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISx-jr-Oop">
                                 <rect key="frame" x="0.0" y="208" width="414" height="200"/>
+                                <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="vlB-Hx-imt"/>
                                 </constraints>
