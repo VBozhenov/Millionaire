@@ -13,6 +13,9 @@ class GameSession {
     var currentQuestion: Int = 0
     var correctAnswers: Int = 0
     var percentOfCorrectAnswers: Int = 0
+    var isFiftyFifty: Bool = true
+    var isCallFriend: Bool = true
+    var isAudienceHelp: Bool = true
     
     // MARK: - Methods
     private func calculatePercentOfCorrectAnswers() {

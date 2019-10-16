@@ -13,7 +13,7 @@ struct Questions {
     var questions: [Question]
     
     init() {
-        self.questions = [Question(question: "Как заканчивается присказка: Мы и сами с...?",
+        self.questions = [Question(question: "Как заканчивается присказка: 'Мы и сами с...?'",
                                    answers: ["с волосами",
                                              "с усами",
                                              "с часами",
@@ -42,6 +42,37 @@ struct Questions {
                                              "b7",
                                              "k6",
                                              "g5"],
+                                   rightAnswer: 3),
+                          Question(question: "Что не собирают?",
+                                   answers: ["коллекцию",
+                                             "коррупцию",
+                                             "конструкцию",
+                                             "информацию"],
+                                   rightAnswer: 2),
+                          Question(question: "Какая бывает лопата?",
+                                   answers: ["совковая",
+                                             "граблевая",
+                                             "тяпковая",
+                                             "мотыжная"],
+                                   rightAnswer: 1),
+                          Question(question: "Как называется фильм, снятый по мотивам 'Повести временных лет'?",
+                                   answers: ["Варяг",
+                                             "Кореец",
+                                             "Викинг",
+                                             "Чухонец"],
+                                   rightAnswer: 3),
+                          Question(question: "На что надевают брекеты?",
+                                   answers: ["на пальцы",
+                                             "на уши",
+                                             "на волосы",
+                                             "на зубы"],
+                                   rightAnswer: 4),
+                          Question(question: "Кто такой ара?",
+                                   answers: ["дельфин",
+                                             "медведь",
+                                             "попугай",
+                                             "крокодил"],
                                    rightAnswer: 3)]
+        
     }
 }

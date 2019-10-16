@@ -17,7 +17,6 @@ final class Game {
     private(set) var gameResults: [GameResult] {
         didSet {
             resultCaretaker.save(gameResults: self.gameResults)
-            print(self.gameResults)
         }
     }
     
