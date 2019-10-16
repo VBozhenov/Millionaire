@@ -20,6 +20,7 @@
 		E7D8753F23564925006F497E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D8753E23564925006F497E /* Game.swift */; };
 		E7D8754123564A08006F497E /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D8754023564A08006F497E /* GameSession.swift */; };
 		E7D87543235658BB006F497E /* GameResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D87542235658BB006F497E /* GameResult.swift */; };
+		E7D8754523570941006F497E /* ResultCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D8754423570941006F497E /* ResultCaretaker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		E7D8753E23564925006F497E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		E7D8754023564A08006F497E /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 		E7D87542235658BB006F497E /* GameResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameResult.swift; sourceTree = "<group>"; };
+		E7D8754423570941006F497E /* ResultCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCaretaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			children = (
 				E7D87532235602A2006F497E /* App */,
 				E7D875362356032B006F497E /* Core */,
+				E7D8754623570BAC006F497E /* Service */,
 				E7D8753723560347006F497E /* Environment */,
 				E7D8753823560370006F497E /* Resources */,
 			);
@@ -150,6 +153,14 @@
 				E7D8753A23560F64006F497E /* MainViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		E7D8754623570BAC006F497E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E7D8754423570941006F497E /* ResultCaretaker.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +243,7 @@
 				E7D875172354F4D0006F497E /* AppDelegate.swift in Sources */,
 				E7D875192354F4D0006F497E /* SceneDelegate.swift in Sources */,
 				E7D8753B23560F64006F497E /* MainViewController.swift in Sources */,
+				E7D8754523570941006F497E /* ResultCaretaker.swift in Sources */,
 				E7D87543235658BB006F497E /* GameResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
