@@ -91,7 +91,7 @@ class GameViewController: UIViewController {
         guard let gameDelegate = gameDelegate else { return }
         let correctAnswerIndex = questions[gameDelegate.currentQuestion].rightAnswer - 1
         let randomNumber = Int.random(in: 0 ... (questions[gameDelegate.currentQuestion].answers.count - 1) * 2)
-        let friendsAnsver = randomNumber <= questions[gameDelegate.currentQuestion].answers.count ? randomNumber : correctAnswerIndex
+        let friendsAnsver = randomNumber <= questions[gameDelegate.currentQuestion].answers.count - 1 ? randomNumber : correctAnswerIndex
         answerButton[friendsAnsver].backgroundColor = .green
     }
     
