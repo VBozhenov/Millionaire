@@ -83,7 +83,6 @@ class GameViewController: UIViewController {
                 percentageLeft -= answerPersentage
                 $0.setTitle(($0.titleLabel?.text ?? "") + " - \(answerPersentage) %",
                     for: .normal) }
-        
         answerButton[correctAnswerIndex].setTitle((answerButton[correctAnswerIndex].titleLabel?.text ?? "") + " - \(percentageLeft + 30) %",
             for: .normal)
     }
