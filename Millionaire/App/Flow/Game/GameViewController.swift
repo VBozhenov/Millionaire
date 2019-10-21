@@ -28,7 +28,7 @@ class GameViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet var answerButton: [UIButton]!
+    @IBOutlet var answerButtons: [UIButton]!
     @IBOutlet var hintButtons: [UIButton]!
     
     // MARK: - Life Cicle
@@ -41,7 +41,7 @@ class GameViewController: UIViewController {
     
     // MARK: - Methods
     private func setViewAppearence() {
-        answerButton.forEach {
+        answerButtons.forEach {
             $0.setStyle()
             $0.isEnabled = true
             $0.alpha = 1
@@ -52,7 +52,7 @@ class GameViewController: UIViewController {
     
     private func updateView(with question: Question) {
         setViewAppearence()
-        answerButton.forEach {
+        answerButtons.forEach {
             $0.setTitle(question.answers[$0.tag],
                         for: .normal)
         }
@@ -67,8 +67,8 @@ class GameViewController: UIViewController {
         var wrongIndexes = arrayOfIndexes.filter { $0 != correctAnswerIndex }
         wrongIndexes.remove(at: randomIndex)
         _ = wrongIndexes.map {
-            answerButton[$0].isEnabled = false
-            answerButton[$0].alpha = 0.5
+            answerButtons[$0].isEnabled = false
+            answerButtons[$0].alpha = 0.5
         }
     }
     
@@ -76,14 +76,14 @@ class GameViewController: UIViewController {
         guard let gameDelegate = gameDelegate else { return }
         let correctAnswerIndex = questions[gameDelegate.currentQuestion].rightAnswer - 1
         var percentageLeft = 70
-        answerButton
+        answerButtons
             .filter { $0.tag != correctAnswerIndex }
             .forEach {
                 let answerPersentage = Int.random(in: 0 ... percentageLeft)
                 percentageLeft -= answerPersentage
                 $0.setTitle(($0.titleLabel?.text ?? "") + " - \(answerPersentage) %",
                     for: .normal) }
-        answerButton[correctAnswerIndex].setTitle((answerButton[correctAnswerIndex].titleLabel?.text ?? "") + " - \(percentageLeft + 30) %",
+        answerButtons[correctAnswerIndex].setTitle((answerButtons[correctAnswerIndex].titleLabel?.text ?? "") + " - \(percentageLeft + 30) %",
             for: .normal)
     }
     
@@ -92,7 +92,7 @@ class GameViewController: UIViewController {
         let correctAnswerIndex = questions[gameDelegate.currentQuestion].rightAnswer - 1
         let randomNumber = Int.random(in: 0 ... (questions[gameDelegate.currentQuestion].answers.count - 1) * 2)
         let friendsAnsver = randomNumber <= questions[gameDelegate.currentQuestion].answers.count - 1 ? randomNumber : correctAnswerIndex
-        answerButton[friendsAnsver].backgroundColor = .green
+        answerButtons[friendsAnsver].backgroundColor = .green
     }
     
     // MARK: - IBActions
