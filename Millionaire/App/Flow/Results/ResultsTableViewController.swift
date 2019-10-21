@@ -10,6 +10,7 @@ import UIKit
 
 class ResultsTableViewController: UITableViewController {
 
+    // MARK: - Properties
     let cellID = "ResultCell"
     let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -17,10 +18,12 @@ class ResultsTableViewController: UITableViewController {
         return dateFormatter
     }()
 
+    // MARK: - Life Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
+    // MARK: - TableView DataSource
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
         return Game.shared.gameResults.count
