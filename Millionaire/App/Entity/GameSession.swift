@@ -32,7 +32,6 @@ extension GameSession: GameViewControllerDelegate {
         calculatePercentOfCorrectAnswers()
     }
     
-    // MARK: - Methods
     func gameOver() {
         Game.shared.gameDidEnd(with: percentOfCorrectAnswers)
     }
