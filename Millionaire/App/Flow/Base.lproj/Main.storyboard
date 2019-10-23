@@ -263,8 +263,11 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="khsm" translatesAutoresizingMaskIntoConstraints="NO" id="hu1-2G-zNY">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="208"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0HZ-zK-5Dz" firstAttribute="top" secondItem="sir-Fc-ont" secondAttribute="bottom" constant="80" id="7Pz-YE-Wq8"/>
                             <constraint firstItem="0HZ-zK-5Dz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="DNC-Kw-kP8"/>
@@ -272,8 +275,12 @@
                             <constraint firstItem="sir-Fc-ont" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RkJ-jE-Xoo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sir-Fc-ont" secondAttribute="bottom" constant="200" id="Tfj-sN-3k4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ISx-jr-Oop" secondAttribute="trailing" id="XOb-X6-Q3V"/>
+                            <constraint firstAttribute="trailing" secondItem="hu1-2G-zNY" secondAttribute="trailing" id="ZdE-sq-r4q"/>
+                            <constraint firstItem="hu1-2G-zNY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cpc-YT-r1o"/>
                             <constraint firstItem="ISx-jr-Oop" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hvt-Hc-RdA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0HZ-zK-5Dz" secondAttribute="trailing" constant="40" id="iDg-5J-l3c"/>
+                            <constraint firstItem="ISx-jr-Oop" firstAttribute="top" secondItem="hu1-2G-zNY" secondAttribute="bottom" id="p9O-a3-twi"/>
+                            <constraint firstItem="hu1-2G-zNY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="tdG-GL-r4D"/>
                             <constraint firstItem="sir-Fc-ont" firstAttribute="top" secondItem="ISx-jr-Oop" secondAttribute="bottom" id="zuA-cr-TN1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -297,6 +304,7 @@
     </scenes>
     <resources>
         <image name="divide" catalog="system" width="64" height="50"/>
+        <image name="khsm" width="1280" height="798"/>
         <image name="person.3.fill" catalog="system" width="71" height="34"/>
         <image name="phone.fill" catalog="system" width="64" height="56"/>
     </resources>
