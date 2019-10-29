@@ -11,6 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    private let sessionCaretaker = SessionCaretaker()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
@@ -20,9 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
+        Game.shared.gameSession = sessionCaretaker.retrieveResults()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
+        sessionCaretaker.save(session: Game.shared.gameSession ?? GameSession())
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {

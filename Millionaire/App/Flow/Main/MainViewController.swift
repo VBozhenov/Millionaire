@@ -27,7 +27,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
-        Game.shared.gameSession = GameSession()
+//        Game.shared.gameSession = GameSession()
         performSegue(withIdentifier: "toGame", sender: self)
     }
     

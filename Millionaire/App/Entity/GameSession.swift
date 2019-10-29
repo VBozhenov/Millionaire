@@ -6,7 +6,7 @@
 //  Copyright © 2019 Vladimir Bozhenov. All rights reserved.
 //
 
-class GameSession {
+class GameSession: Codable {
     
     // MARK: - Properties
     var totalQuestions: Int = 0

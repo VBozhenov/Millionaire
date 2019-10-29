@@ -34,9 +34,14 @@ class GameViewController: UIViewController {
     // MARK: - Life Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
-        gameDelegate = Game.shared.gameSession
+//        gameDelegate = Game.shared.gameSession
+        Game.shared.gameSession = GameSession()
         gameDelegate?.totalQuestions = questions.count
         updateView(with: questions[gameDelegate?.currentQuestion ?? 0])
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        gameDelegate = Game.shared.gameSession
     }
     
     // MARK: - Methods
@@ -57,6 +62,9 @@ class GameViewController: UIViewController {
                         for: .normal)
         }
         questionLabel.text = question.question
+        hintButtons[0].isEnabled = gameDelegate?.isFiftyFifty ?? true
+        hintButtons[1].isEnabled = gameDelegate?.isAudienceHelp ?? true
+        hintButtons[2].isEnabled = gameDelegate?.isCallFriend ?? true
     }
     
     private func fiftyFifty() {
