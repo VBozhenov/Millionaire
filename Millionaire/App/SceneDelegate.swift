@@ -21,11 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        Game.shared.gameSession = sessionCaretaker.retrieveResults()
+//        Game.shared.gameSession = sessionCaretaker.retrieveResults()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
-        sessionCaretaker.save(session: Game.shared.gameSession ?? GameSession())
+//        sessionCaretaker.save(session: Game.shared.gameSession ?? GameSession())
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {

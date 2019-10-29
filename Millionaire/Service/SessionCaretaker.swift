@@ -16,26 +16,26 @@ final class SessionCaretaker {
     private let key = "session"
     
     // MARK: - Methods
-    func save(session: GameSession) {
-        do {
-            let data = try self.encoder.encode(session)
-            UserDefaults.standard.set(data,
-                                      forKey: key)
-        } catch {
-            print(error)
-        }
-    }
-    
-    func retrieveResults() -> GameSession {
-        guard let data = UserDefaults.standard.data(forKey: key) else {
-            return GameSession()
-        }
-        do {
-            return try self.decoder.decode(GameSession.self,
-                                           from: data)
-        } catch {
-            print(error)
-            return GameSession()
-        }
-    }
+//    func save(session: GameSession) {
+//        do {
+//            let data = try self.encoder.encode(session)
+//            UserDefaults.standard.set(data,
+//                                      forKey: key)
+//        } catch {
+//            print(error)
+//        }
+//    }
+//
+//    func retrieveResults() -> GameSession {
+//        guard let data = UserDefaults.standard.data(forKey: key) else {
+//            return GameSession()
+//        }
+//        do {
+//            return try self.decoder.decode(GameSession.self,
+//                                           from: data)
+//        } catch {
+//            print(error)
+//            return GameSession()
+//        }
+//    }
 }
