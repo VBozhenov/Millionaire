@@ -26,6 +26,7 @@ class GameViewController: UIViewController {
     weak var gameDelegate: GameViewControllerDelegate?
     private var questions = Questions().questions
     var questionStrategy: QuestionsOrderStrategy?
+    private let questionsCaretaker = QuestionsCaretaker()
     
     // MARK: - IBOutlets
     @IBOutlet weak var questionLabel: UILabel!
@@ -38,6 +39,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         gameDelegate = Game.shared.gameSession
+        loadCustomQuestions()
         gameDelegate?.totalQuestions = questions.count
         switch Game.shared.questionsOrder  {
         case .straight :
@@ -60,6 +62,13 @@ class GameViewController: UIViewController {
         }
         questionLabel.setStyle()
         hintButtons.forEach { $0.setStyle() }
+    }
+    
+    private func loadCustomQuestions() {
+        
+          if let customQuestions = try? questionsCaretaker.loadCustomQuestions() {
+            self.questions.append(contentsOf: customQuestions)
+          }
     }
     
     private func updateView(with question: Question) {

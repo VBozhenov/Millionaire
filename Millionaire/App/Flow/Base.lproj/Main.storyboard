@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="P46-gO-IQu">
-                                <rect key="frame" x="40" y="338.5" width="334" height="219"/>
+                                <rect key="frame" x="40" y="293.5" width="334" height="309"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKy-8S-QHJ">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="39"/>
@@ -50,6 +50,17 @@
                                             <segue destination="2sZ-4s-6UK" kind="show" id="RN8-QZ-m1b"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k74-yH-NAc">
+                                        <rect key="frame" x="0.0" y="270" width="334" height="39"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="ДОБАВИТЬ ВОПРОС">
+                                            <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resultsButtonTapped:" destination="O3V-im-BGT" eventType="touchUpInside" id="LRA-fT-qev"/>
+                                            <segue destination="UU4-l3-Ybs" kind="show" id="TtC-qT-Zi1"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -63,6 +74,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ybv-cv-ZyU"/>
                     <connections>
+                        <outlet property="addQuestion" destination="k74-yH-NAc" id="rBf-d1-qAU"/>
                         <outlet property="playButton" destination="KKy-8S-QHJ" id="hjm-ng-GLF"/>
                         <outlet property="resultsButton" destination="UL0-WF-uM0" id="dd9-Ug-aBp"/>
                         <outlet property="settingsButton" destination="92T-o3-Jvl" id="pat-2x-bSI"/>
@@ -140,6 +152,7 @@
                                     <segment title="По порядку"/>
                                     <segment title="В случайном порядке"/>
                                 </segments>
+                                <color key="selectedSegmentTintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -393,7 +406,213 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1198.5507246376812" y="119.86607142857142"/>
+            <point key="canvasLocation" x="1199" y="-240"/>
+        </scene>
+        <!--Add Question View Controller-->
+        <scene sceneID="dl1-TW-QZQ">
+            <objects>
+                <viewController id="UU4-l3-Ybs" customClass="AddQuestionViewController" customModule="Millionaire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LhO-KA-jtx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4fS-48-jP9">
+                                <rect key="frame" x="8" y="65" width="398" height="407"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XRI-v2-qrz">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="54.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вопрос" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWh-BX-cKj">
+                                                <rect key="frame" x="8" y="0.0" width="374" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите вопрос" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MLP-qA-sgR">
+                                                <rect key="frame" x="8" y="20.5" width="374" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="MLP-qA-sgR" secondAttribute="trailing" constant="8" id="1tQ-AA-xsL"/>
+                                            <constraint firstItem="MLP-qA-sgR" firstAttribute="leading" secondItem="XRI-v2-qrz" secondAttribute="leading" constant="8" id="4lj-5V-qdJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="DWh-BX-cKj" secondAttribute="trailing" constant="8" id="cS1-i7-fCr"/>
+                                            <constraint firstItem="DWh-BX-cKj" firstAttribute="leading" secondItem="XRI-v2-qrz" secondAttribute="leading" constant="8" id="v5G-zP-Woz"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ctl-hD-GBh">
+                                        <rect key="frame" x="0.0" y="62.5" width="390" height="62.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ответ 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSO-HP-QSi">
+                                                <rect key="frame" x="8" y="0.0" width="374" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите ответ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZHd-3b-vff">
+                                                <rect key="frame" x="8" y="28.5" width="374" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="PSO-HP-QSi" firstAttribute="leading" secondItem="ctl-hD-GBh" secondAttribute="leading" constant="8" id="53w-hm-7Pb"/>
+                                            <constraint firstItem="ZHd-3b-vff" firstAttribute="leading" secondItem="ctl-hD-GBh" secondAttribute="leading" constant="8" id="AMo-nU-uGm"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZHd-3b-vff" secondAttribute="trailing" constant="8" id="kkf-SN-i9G"/>
+                                            <constraint firstAttribute="trailing" secondItem="PSO-HP-QSi" secondAttribute="trailing" constant="8" id="l9F-Bo-rMb"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4gn-Ju-oNm">
+                                        <rect key="frame" x="0.0" y="133" width="390" height="62.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ответ 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEo-iJ-LhZ">
+                                                <rect key="frame" x="8" y="0.0" width="374" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите ответ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1tn-Ay-P4g">
+                                                <rect key="frame" x="8" y="28.5" width="374" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="eEo-iJ-LhZ" firstAttribute="leading" secondItem="4gn-Ju-oNm" secondAttribute="leading" constant="8" id="HSZ-PR-wh4"/>
+                                            <constraint firstItem="1tn-Ay-P4g" firstAttribute="leading" secondItem="4gn-Ju-oNm" secondAttribute="leading" constant="8" id="LyB-QR-vWo"/>
+                                            <constraint firstAttribute="trailing" secondItem="1tn-Ay-P4g" secondAttribute="trailing" constant="8" id="a49-lB-Gx0"/>
+                                            <constraint firstAttribute="trailing" secondItem="eEo-iJ-LhZ" secondAttribute="trailing" constant="8" id="sgf-e0-H1I"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VbY-da-aWy">
+                                        <rect key="frame" x="0.0" y="203.5" width="390" height="62.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ответ 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6u-Lc-Vtv">
+                                                <rect key="frame" x="8" y="0.0" width="374" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите ответ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zap-pk-MzX">
+                                                <rect key="frame" x="8" y="28.5" width="374" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="B6u-Lc-Vtv" firstAttribute="leading" secondItem="VbY-da-aWy" secondAttribute="leading" constant="8" id="0Go-VO-sho"/>
+                                            <constraint firstAttribute="trailing" secondItem="Zap-pk-MzX" secondAttribute="trailing" constant="8" id="5i7-HI-3fR"/>
+                                            <constraint firstAttribute="trailing" secondItem="B6u-Lc-Vtv" secondAttribute="trailing" constant="8" id="7b8-8E-fcT"/>
+                                            <constraint firstItem="Zap-pk-MzX" firstAttribute="leading" secondItem="VbY-da-aWy" secondAttribute="leading" constant="8" id="97h-F2-4Fx"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7Rw-2w-I8r">
+                                        <rect key="frame" x="0.0" y="274" width="390" height="62.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ответ 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llX-oa-iDd">
+                                                <rect key="frame" x="8" y="0.0" width="374" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите ответ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mPu-fY-v9b">
+                                                <rect key="frame" x="8" y="28.5" width="374" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="mPu-fY-v9b" firstAttribute="leading" secondItem="7Rw-2w-I8r" secondAttribute="leading" constant="8" id="S7W-q1-AIX"/>
+                                            <constraint firstAttribute="trailing" secondItem="llX-oa-iDd" secondAttribute="trailing" constant="8" id="ljL-II-UK5"/>
+                                            <constraint firstAttribute="trailing" secondItem="mPu-fY-v9b" secondAttribute="trailing" constant="8" id="oRN-4z-ObX"/>
+                                            <constraint firstItem="llX-oa-iDd" firstAttribute="leading" secondItem="7Rw-2w-I8r" secondAttribute="leading" constant="8" id="qP3-Pl-XPm"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Onq-Y0-Y15">
+                                        <rect key="frame" x="0.0" y="344.5" width="390" height="62.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Правильный ответ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zwr-J0-oig">
+                                                <rect key="frame" x="8" y="0.0" width="374" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите номер" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iGI-dp-50V">
+                                                <rect key="frame" x="8" y="28.5" width="374" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="iGI-dp-50V" secondAttribute="trailing" constant="8" id="Noe-hW-Dmu"/>
+                                            <constraint firstAttribute="trailing" secondItem="Zwr-J0-oig" secondAttribute="trailing" constant="8" id="RWD-PE-KVR"/>
+                                            <constraint firstItem="Zwr-J0-oig" firstAttribute="leading" secondItem="Onq-Y0-Y15" secondAttribute="leading" constant="8" id="eTe-vd-x2w"/>
+                                            <constraint firstItem="iGI-dp-50V" firstAttribute="leading" secondItem="Onq-Y0-Y15" secondAttribute="leading" constant="8" id="wWR-2t-C4V"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ctl-hD-GBh" secondAttribute="trailing" constant="8" id="SaL-si-njb"/>
+                                    <constraint firstAttribute="trailing" secondItem="7Rw-2w-I8r" secondAttribute="trailing" constant="8" id="cOl-N9-8Td"/>
+                                    <constraint firstAttribute="trailing" secondItem="XRI-v2-qrz" secondAttribute="trailing" constant="8" id="e2r-Kf-46E"/>
+                                    <constraint firstAttribute="trailing" secondItem="4gn-Ju-oNm" secondAttribute="trailing" constant="8" id="o2m-Tf-mza"/>
+                                    <constraint firstAttribute="trailing" secondItem="VbY-da-aWy" secondAttribute="trailing" constant="8" id="p2k-V8-8GU"/>
+                                    <constraint firstAttribute="trailing" secondItem="Onq-Y0-Y15" secondAttribute="trailing" constant="8" id="xJi-wv-b2j"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqZ-Fj-xfe">
+                                <rect key="frame" x="33" y="15" width="93" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="&lt; Назад">
+                                    <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonWasPressed:" destination="UU4-l3-Ybs" eventType="touchUpInside" id="fAC-yj-9lb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tt-aR-gUc">
+                                <rect key="frame" x="372" y="8" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="fMC-CR-X47"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="gLa-Kb-RC2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addButtonWasPressed:" destination="UU4-l3-Ybs" eventType="touchUpInside" id="5BK-k6-hDn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FTP-I8-Mus" firstAttribute="trailing" secondItem="1tt-aR-gUc" secondAttribute="trailing" constant="8" id="3IP-oE-1qc"/>
+                            <constraint firstItem="hqZ-Fj-xfe" firstAttribute="centerY" secondItem="1tt-aR-gUc" secondAttribute="centerY" id="Ake-RK-y6D"/>
+                            <constraint firstItem="4fS-48-jP9" firstAttribute="leading" secondItem="FTP-I8-Mus" secondAttribute="leading" constant="8" id="CLY-J5-cOI"/>
+                            <constraint firstItem="FTP-I8-Mus" firstAttribute="trailing" secondItem="4fS-48-jP9" secondAttribute="trailing" constant="8" id="GCc-8D-jY6"/>
+                            <constraint firstItem="1tt-aR-gUc" firstAttribute="top" secondItem="FTP-I8-Mus" secondAttribute="top" constant="8" id="SQa-qF-2jh"/>
+                            <constraint firstItem="4fS-48-jP9" firstAttribute="top" secondItem="hqZ-Fj-xfe" secondAttribute="bottom" constant="30" id="arx-VC-6um"/>
+                            <constraint firstItem="1tt-aR-gUc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hqZ-Fj-xfe" secondAttribute="trailing" constant="8" symbolic="YES" id="ipC-rT-3wP"/>
+                            <constraint firstItem="hqZ-Fj-xfe" firstAttribute="leading" secondItem="FTP-I8-Mus" secondAttribute="leading" constant="33" id="k1A-5a-pr1"/>
+                            <constraint firstItem="hqZ-Fj-xfe" firstAttribute="top" secondItem="FTP-I8-Mus" secondAttribute="top" constant="15" id="uFb-Lp-k6O"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FTP-I8-Mus"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7fL-UW-WH3"/>
+                    <connections>
+                        <outlet property="correctAnswer" destination="iGI-dp-50V" id="OCM-LX-WkQ"/>
+                        <outlet property="question" destination="MLP-qA-sgR" id="VrO-ae-Fai"/>
+                        <outletCollection property="answers" destination="ZHd-3b-vff" collectionClass="NSMutableArray" id="K4O-Td-fee"/>
+                        <outletCollection property="answers" destination="1tn-Ay-P4g" collectionClass="NSMutableArray" id="gbg-ET-yMa"/>
+                        <outletCollection property="answers" destination="Zap-pk-MzX" collectionClass="NSMutableArray" id="e0E-0M-iSf"/>
+                        <outletCollection property="answers" destination="mPu-fY-v9b" collectionClass="NSMutableArray" id="6LX-Sx-pP2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fSD-5h-YYR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1876.8115942028987" y="265.84821428571428"/>
         </scene>
     </scenes>
     <resources>

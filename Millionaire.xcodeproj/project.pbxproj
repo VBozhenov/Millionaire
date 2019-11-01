@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E700DB2323574E7F008B5F27 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E700DB2223574E7F008B5F27 /* Alert.swift */; };
 		E702F312235DC39F00DBBF3C /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E702F311235DC39F00DBBF3C /* ResultsTableViewController.swift */; };
+		E71683F6236C3A6C007FCEC7 /* AddQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71683F5236C3A6C007FCEC7 /* AddQuestionViewController.swift */; };
+		E71683FA236CC6FE007FCEC7 /* QuestionCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71683F9236CC6FE007FCEC7 /* QuestionCaretaker.swift */; };
 		E7C2CDBA2367F035009FDBD7 /* SessionCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C2CDB92367F035009FDBD7 /* SessionCaretaker.swift */; };
 		E7C2CDBD23683139009FDBD7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C2CDBC23683139009FDBD7 /* SettingsViewController.swift */; };
 		E7C2CDBF236857A1009FDBD7 /* QuestionsOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C2CDBE236857A1009FDBD7 /* QuestionsOrder.swift */; };
@@ -35,6 +37,8 @@
 /* Begin PBXFileReference section */
 		E700DB2223574E7F008B5F27 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		E702F311235DC39F00DBBF3C /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
+		E71683F5236C3A6C007FCEC7 /* AddQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionViewController.swift; sourceTree = "<group>"; };
+		E71683F9236CC6FE007FCEC7 /* QuestionCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCaretaker.swift; sourceTree = "<group>"; };
 		E7C2CDB92367F035009FDBD7 /* SessionCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCaretaker.swift; sourceTree = "<group>"; };
 		E7C2CDBC23683139009FDBD7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E7C2CDBE236857A1009FDBD7 /* QuestionsOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsOrder.swift; sourceTree = "<group>"; };
@@ -77,6 +81,14 @@
 				E702F311235DC39F00DBBF3C /* ResultsTableViewController.swift */,
 			);
 			path = Results;
+			sourceTree = "<group>";
+		};
+		E71683F4236C3A43007FCEC7 /* AddQuestion */ = {
+			isa = PBXGroup;
+			children = (
+				E71683F5236C3A6C007FCEC7 /* AddQuestionViewController.swift */,
+			);
+			path = AddQuestion;
 			sourceTree = "<group>";
 		};
 		E7C2CDBB23683117009FDBD7 /* Settings */ = {
@@ -157,6 +169,7 @@
 				E7D875352356030F006F497E /* Game */,
 				E702F310235DC2F500DBBF3C /* Results */,
 				E7C2CDBB23683117009FDBD7 /* Settings */,
+				E71683F4236C3A43007FCEC7 /* AddQuestion */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -210,6 +223,7 @@
 			children = (
 				E7D8754423570941006F497E /* ResultCaretaker.swift */,
 				E7C2CDB92367F035009FDBD7 /* SessionCaretaker.swift */,
+				E71683F9236CC6FE007FCEC7 /* QuestionCaretaker.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -290,6 +304,8 @@
 				E7D8753F23564925006F497E /* Game.swift in Sources */,
 				E7D8754123564A08006F497E /* GameSession.swift in Sources */,
 				E7D8751B2354F4D0006F497E /* GameViewController.swift in Sources */,
+				E71683F6236C3A6C007FCEC7 /* AddQuestionViewController.swift in Sources */,
+				E71683FA236CC6FE007FCEC7 /* QuestionCaretaker.swift in Sources */,
 				E7D875312355FF5E006F497E /* Questions.swift in Sources */,
 				E7C2CDC223685C23009FDBD7 /* QuestionsOrderStrategy.swift in Sources */,
 				E7D8752F2355FEB1006F497E /* Question.swift in Sources */,
