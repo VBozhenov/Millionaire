@@ -6,7 +6,7 @@
 //  Copyright © 2019 Vladimir Bozhenov. All rights reserved.
 //
 
-struct Question {
+struct Question: Codable {
     let question: String
     let answers: [String]
     let rightAnswer: Int

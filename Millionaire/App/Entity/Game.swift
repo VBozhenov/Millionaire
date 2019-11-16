@@ -19,9 +19,11 @@ final class Game {
             resultCaretaker.save(gameResults: self.gameResults)
         }
     }
+    var questionsOrder: QuestionsOrder
     
     private init() {
         self.gameResults = self.resultCaretaker.retrieveResults()
+        self.questionsOrder = .straight
     }
     
     // MARK: - Methods

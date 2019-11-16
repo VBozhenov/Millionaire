@@ -10,8 +10,8 @@ import UIKit
 
 protocol GameViewControllerDelegate: class {
     var totalQuestions: Int { get set }
-    var percentOfCorrectAnswers: Int { get set }
-    var currentQuestion: Int { get set }
+    var percentOfCorrectAnswers: Observable<Int> { get set }
+    var currentQuestion: Observable<Int> { get set }
     var isFiftyFifty: Bool { get set }
     var isCallFriend: Bool { get set }
     var isAudienceHelp: Bool { get set }
@@ -24,19 +24,33 @@ class GameViewController: UIViewController {
     // MARK: - Properties
     private var alert = Alert()
     weak var gameDelegate: GameViewControllerDelegate?
-    private let questions = Questions().questions
+    private var questions = Questions().questions
+    var questionStrategy: QuestionsOrderStrategy?
+    private let questionsCaretaker = QuestionsCaretaker()
     
     // MARK: - IBOutlets
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet var answerButtons: [UIButton]!
     @IBOutlet var hintButtons: [UIButton]!
+    @IBOutlet weak var questionNumberLabel: UILabel!
+    @IBOutlet weak var correctAnswersPersentageLabel: UILabel!
     
     // MARK: - Life Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
         gameDelegate = Game.shared.gameSession
+        loadCustomQuestions()
         gameDelegate?.totalQuestions = questions.count
-        updateView(with: questions[gameDelegate?.currentQuestion ?? 0])
+        switch Game.shared.questionsOrder  {
+        case .straight :
+            questionStrategy = QuestionsStraightStrategy()
+        case .shuffle:
+            questionStrategy = QuestionsShuffleStrategy()
+        }
+        questions = questionStrategy?.chooseOrderOfQuestions(from: questions) ?? questions
+        gameDelegate?.percentOfCorrectAnswers.addObserver(self, options: [.new, .initial], closure: { [weak self] (percentage, _) in self?.correctAnswersPersentageLabel.text = "\(percentage)%" })
+        gameDelegate?.currentQuestion.addObserver(self, options: [.new, .initial], closure: { [weak self] (question, _) in self?.questionNumberLabel.text = "\(question + 1)" })
+        updateView(with: questions[gameDelegate?.currentQuestion.value ?? 0])
     }
     
     // MARK: - Methods
@@ -50,6 +64,13 @@ class GameViewController: UIViewController {
         hintButtons.forEach { $0.setStyle() }
     }
     
+    private func loadCustomQuestions() {
+        
+          if let customQuestions = try? questionsCaretaker.loadCustomQuestions() {
+            self.questions.append(contentsOf: customQuestions)
+          }
+    }
+    
     private func updateView(with question: Question) {
         setViewAppearence()
         answerButtons.forEach {
@@ -57,12 +78,15 @@ class GameViewController: UIViewController {
                         for: .normal)
         }
         questionLabel.text = question.question
+        hintButtons[0].isEnabled = gameDelegate?.isFiftyFifty ?? true
+        hintButtons[1].isEnabled = gameDelegate?.isAudienceHelp ?? true
+        hintButtons[2].isEnabled = gameDelegate?.isCallFriend ?? true
     }
     
     private func fiftyFifty() {
         guard let gameDelegate = gameDelegate else { return }
-        let correctAnswerIndex = questions[gameDelegate.currentQuestion].rightAnswer - 1
-        let arrayOfIndexes = Array(0..<questions[gameDelegate.currentQuestion].answers.count)
+        let correctAnswerIndex = questions[gameDelegate.currentQuestion.value].rightAnswer - 1
+        let arrayOfIndexes = Array(0..<questions[gameDelegate.currentQuestion.value].answers.count)
         let randomIndex = Int.random(in: 0..<(arrayOfIndexes.count - 1))
         var wrongIndexes = arrayOfIndexes.filter { $0 != correctAnswerIndex }
         wrongIndexes.remove(at: randomIndex)
@@ -74,7 +98,7 @@ class GameViewController: UIViewController {
     
     private func audienceHelp() {
         guard let gameDelegate = gameDelegate else { return }
-        let correctAnswerIndex = questions[gameDelegate.currentQuestion].rightAnswer - 1
+        let correctAnswerIndex = questions[gameDelegate.currentQuestion.value].rightAnswer - 1
         var percentageLeft = 70
         answerButtons
             .filter { $0.tag != correctAnswerIndex }
@@ -89,23 +113,23 @@ class GameViewController: UIViewController {
     
     private func callFriend() {
         guard let gameDelegate = gameDelegate else { return }
-        let correctAnswerIndex = questions[gameDelegate.currentQuestion].rightAnswer - 1
-        let randomNumber = Int.random(in: 0 ... (questions[gameDelegate.currentQuestion].answers.count - 1) * 2)
-        let friendsAnsver = randomNumber <= questions[gameDelegate.currentQuestion].answers.count - 1 ? randomNumber : correctAnswerIndex
+        let correctAnswerIndex = questions[gameDelegate.currentQuestion.value].rightAnswer - 1
+        let randomNumber = Int.random(in: 0 ... (questions[gameDelegate.currentQuestion.value].answers.count - 1) * 2)
+        let friendsAnsver = randomNumber <= questions[gameDelegate.currentQuestion.value].answers.count - 1 ? randomNumber : correctAnswerIndex
         answerButtons[friendsAnsver].backgroundColor = .green
     }
     
     // MARK: - IBActions
     @IBAction func answerButtonTapped(_ sender: UIButton) {
         guard let gameDelegate = gameDelegate else { return }
-        if sender.tag != questions[gameDelegate.currentQuestion].rightAnswer - 1 {
+        if sender.tag != questions[gameDelegate.currentQuestion.value].rightAnswer - 1 {
             gameDelegate.gameOver()
             alert.showAlertWith(title: "СОЖАЛЕЮ",
                                 message: "Вы проиграли!",
                                 in: self)
-        } else if gameDelegate.currentQuestion < questions.count - 1 {
+        } else if gameDelegate.currentQuestion.value < questions.count - 1 {
             gameDelegate.answeredCorrect()
-            updateView(with: questions[gameDelegate.currentQuestion])
+            updateView(with: questions[gameDelegate.currentQuestion.value])
         } else {
             gameDelegate.answeredCorrect()
             gameDelegate.gameOver()

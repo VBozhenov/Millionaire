@@ -10,9 +10,9 @@ class GameSession {
     
     // MARK: - Properties
     var totalQuestions: Int = 0
-    var currentQuestion: Int = 0
+    var currentQuestion: Observable<Int> = Observable(0)
     var correctAnswers: Int = 0
-    var percentOfCorrectAnswers: Int = 0
+    var percentOfCorrectAnswers: Observable<Int> = Observable(0)
     var isFiftyFifty: Bool = true
     var isCallFriend: Bool = true
     var isAudienceHelp: Bool = true
@@ -20,19 +20,20 @@ class GameSession {
     // MARK: - Methods
     private func calculatePercentOfCorrectAnswers() {
         guard totalQuestions != 0 else { return }
-        percentOfCorrectAnswers = Int(Double(correctAnswers) / Double(totalQuestions) * 100)
+        percentOfCorrectAnswers.value = Int(Double(correctAnswers) / Double(totalQuestions) * 100)
     }
 }
 
 // MARK: - GameViewControllerDelegate
 extension GameSession: GameViewControllerDelegate {
+    
     func answeredCorrect() {
         correctAnswers += 1
-        currentQuestion += 1
+        currentQuestion.value += 1
         calculatePercentOfCorrectAnswers()
     }
     
     func gameOver() {
-        Game.shared.gameDidEnd(with: percentOfCorrectAnswers)
+        Game.shared.gameDidEnd(with: percentOfCorrectAnswers.value)
     }
 }

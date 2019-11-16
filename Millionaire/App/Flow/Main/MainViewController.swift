@@ -13,6 +13,8 @@ class MainViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var resultsButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var addQuestion: UIButton!
     
     // MARK: - Life Cicle
     override func viewDidLoad() {
@@ -24,6 +26,8 @@ class MainViewController: UIViewController {
     private func setViewAppearence() {
         playButton.setStyle()
         resultsButton.setStyle()
+        settingsButton.setStyle()
+        addQuestion.setStyle()
     }
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
